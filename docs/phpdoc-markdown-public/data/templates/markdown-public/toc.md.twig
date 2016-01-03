@@ -1,0 +1,12 @@
+# Usage
+
+## Available API's
+
+{% for class in project.indexes.classes|sort_asc %}
+{% if not class.abstract %}
+* {{ anchorLink(class.name) }}
+{% for method in publicMethods(class) %}
+    * {{ anchorLink(method.name) }}
+{% endfor %}
+{% endif %}
+{% endfor %}

@@ -18,7 +18,18 @@ use Instela\SDK\InstelaClient;
 use Instela\SDK\Result;
 
 /**
- * This client is used to interact with the Instela Messaging service.
+ * This API is used to interact with the Instela Messaging service.
+ *
+ * All methods of this API requires a valid OAuth 2.0 access token.
+ *
+ * You can create a new instance for this API you can use the default constructor:
+ *
+ * ```php
+ * use Instela\SDK\Messages;
+ * $client = MessagesClient(array(
+ *  'token' => 'ACCESS_TOKEN'
+ * ));
+ * ```
  *
  */
 class MessagesClient extends InstelaClient
@@ -66,7 +77,7 @@ class MessagesClient extends InstelaClient
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
      * ));
-     *
+     * ```
      *
      * @param array $args Arguments
      *

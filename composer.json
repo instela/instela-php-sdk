@@ -1,4 +1,6 @@
 {
+  "name": "instela/instela-php-sdk",
+  "description": "Instela API",
   "require": {
     "php": ">=5.5",
     "guzzlehttp/guzzle": "~6.1"

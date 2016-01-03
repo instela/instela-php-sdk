@@ -18,7 +18,7 @@ use Instela\SDK\Messages\MessagesClient;
 class MessagesClientTest extends \PHPUnit_Framework_TestCase
 {
 
-    const TOKEN = 'b6bcef664b7c4d26d27893c05c5e8be16a5cbc1dbeca792e93691ef583bf8a55';
+    const TOKEN = 'test_api_token';
 
     public function getClient(array $options = [])
     {
@@ -33,7 +33,7 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
         $client = $this->getClient(['token' => 'WRONG_TOKEN']);
         $client->getThread(
             [
-                'u1' => 1,
+                'u1' => 213181,
                 'u2' => 50
             ]
         );
@@ -56,7 +56,7 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
         $client = $this->getClient(['token' => static::TOKEN]);
         $thread = $client->getThread(
             [
-                'u1' => 1,
+                'u1' => 213181,
                 'u2' => 50
             ]
         )->getResult();

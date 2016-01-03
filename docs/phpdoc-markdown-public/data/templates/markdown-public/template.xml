@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+  <author>Cagatay Gurturk</author>
+  <email>cagatay@instela.com</email>
+  <version>1.0.0</version>
+  <copyright>Carl Vuorinen 2015</copyright>
+  <description>Generates documentation from source code comments</description>
+  <transformations>
+    <transformation writer="twig" source="templates/markdown-public/index.md.twig" artifact="README.md" />
+  </transformations>
+  <parameters>
+    <parameter key="twig-debug">true</parameter>
+    <parameter key="twig-extension">Cvuorinen\PhpdocMarkdownPublic\Extension\TwigMarkdownAnchorLink</parameter>
+    <parameter key="twig-extension">Cvuorinen\PhpdocMarkdownPublic\Extension\TwigClassPublicMethods</parameter>
+  </parameters>
+</template>

@@ -1,6 +1,24 @@
-# Instela API SDK Documentation
+# Instela API PHP SDK
 
-## Table of Contents
+[![Build Status](https://travis-ci.com/thehivecluster/instela-api-client.svg?token=g7m3yvL9xyyUBXqyRzHX)](https://travis-ci.com/thehivecluster/instela-api-client)
+
+Instela API makes accessible almost every method used in [Instela](https://www.instela.com). With PHP SDK, you can easily access to all API functions in PHP.
+ 
+## Getting Started
+
+1. **Minimum requirements** – To run the SDK, your system will need to meet the
+   [minimum requirements][docs-requirements], including having **PHP >= 5.5**
+   compiled with the cURL extension and cURL 7.16.2+ compiled with a TLS
+   backend (e.g., NSS or OpenSSL).
+1. **Install the SDK** – Using [Composer] is the recommended way to install the
+   AWS SDK for PHP. The SDK is available via [Packagist] under the
+   [`instela/instela-php-sdk`][install-packagist] package.
+1. **Using the SDK** – Please read this document to learn how to use the API.
+  
+
+# Usage
+
+## Available API's
 
 * [MessagesClient](#messagesclient)
     * [getThreadList](#getthreadlist)
@@ -8,14 +26,24 @@
     * [sendMessage](#sendmessage)
 
 ## MessagesClient
-
-This client is used to interact with the Instela Messaging service.
-
+*\Instela\SDK\Messages\MessagesClient*
 
 
-* Full name: \Instela\SDK\Messages\MessagesClient
-* Parent class: 
+This API is used to interact with the Instela Messaging service.
 
+All methods of this API requires a valid OAuth 2.0 access token.
+
+You can create a new instance for this API you can use the default constructor:
+
+```php
+use Instela\SDK\Messages;
+$client = MessagesClient(array(
+ 'token' => 'ACCESS_TOKEN'
+));
+```
+
+
+### Available methods:
 
 
 ### getThreadList
@@ -36,17 +64,8 @@ $thread = $messageClient->getThread(array(
 ```
 
 
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$args` | **array** | Arguments |
-
-
-
 
 ---
-
 
 ### getThread
 
@@ -65,19 +84,11 @@ $thread = $messageClient->getThread(array(
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
 ));
-
-
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$args` | **array** | Arguments |
-
+```
 
 
 
 ---
-
 
 ### sendMessage
 
@@ -90,18 +101,5 @@ MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Result
 
 
 
-**Parameters:**
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `$args` | **array** | Arguments |
-
-
-
 
 ---
-
-
-
---------
-> This document was automatically generated from source code comments on 2016-01-04 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
-    <title>Instela API SDK Documentation</title>
+    <title>Instela API PHP SDK</title>
     <parser>
         <target>build</target>
     </parser>
@@ -8,7 +8,7 @@
         <target>./</target>
     </transformer>
     <transformations>
-        <template name="vendor/cvuorinen/phpdoc-markdown-public/data/templates/markdown-public" />
+        <template name="docs/phpdoc-markdown-public/data/templates/markdown-public" />
     </transformations>
     <files>
         <directory>src/Messages</directory>
