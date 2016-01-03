@@ -1,0 +1,126 @@
+{
+  "version": "3.0",
+  "metadata": {
+    "endpointPrefix": "messages",
+    "serviceFullName": "Instela Messages Service"
+  },
+  "operations": {
+    "GetThreadList": {
+      "name": "GetThreadList",
+      "http": {
+        "method": "GET",
+        "requestUri": ""
+      },
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query"
+        },
+        {
+          "name": "per_page",
+          "location": "query"
+        }
+      ],
+      "errors": {
+        "400": {
+          "shape": "BadRequestException",
+          "exception": true
+        },
+        "401": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "403": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "404": {
+          "shape": "NotFoundException",
+          "exception": true
+        },
+        "429": {
+          "shape": "TooManyRequestsException",
+          "exception": true
+        }
+      }
+    },
+    "GetThread": {
+      "name": "GetThread",
+      "http": {
+        "method": "GET",
+        "requestUri": "/{u1}-{u2}"
+      },
+      "parameters": [
+        {
+          "name": "page",
+          "location": "query"
+        },
+        {
+          "name": "per_page",
+          "location": "query"
+        }
+      ],
+      "errors": {
+        "400": {
+          "shape": "BadRequestException",
+          "exception": true
+        },
+        "401": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "403": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "404": {
+          "shape": "NotFoundException",
+          "exception": true
+        },
+        "429": {
+          "shape": "TooManyRequestsException",
+          "exception": true
+        }
+      }
+    },
+    "SendMessage": {
+      "name": "SendMessage",
+      "http": {
+        "method": "POST",
+        "requestUri": ""
+      },
+      "parameters": [
+        {
+          "name": "receiver",
+          "location": "body"
+        },
+        {
+          "name": "message",
+          "location": "body"
+        }
+      ],
+      "errors": {
+        "400": {
+          "shape": "BadRequestException",
+          "exception": true
+        },
+        "401": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "403": {
+          "shape": "UnauthorizedException",
+          "exception": true
+        },
+        "404": {
+          "shape": "NotFoundException",
+          "exception": true
+        },
+        "429": {
+          "shape": "TooManyRequestsException",
+          "exception": true
+        }
+      }
+    }
+  }
+}
