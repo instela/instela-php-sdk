@@ -43,8 +43,6 @@ $client = MessagesClient(array(
 ```
 
 
-### Available methods:
-
 
 ### getThreadList
 
@@ -57,12 +55,17 @@ MessagesClient::getThreadList( array $args = array() ): \Instela\SDK\Result
 **Example:**
 
 ```php
-$thread = $messageClient->getThread(array(
+$thread = $messageClient->getThreadList(array(
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
-));
+))->getResult();
+
 ```
 
+
+**Return Value:**
+
+Returns the thread list as an array. See the array content or API documentation for more information.
 
 
 ---
@@ -83,9 +86,13 @@ $thread = $messageClient->getThread(array(
     'u2' => 50, // User Id of the second participant of the message thread
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
-));
+))->getResult();
 ```
 
+
+**Return Value:**
+
+Returns the thread as an array. See the array content or API documentation for more information.
 
 
 ---
@@ -98,8 +105,19 @@ Sends message from the account of the authorized user.
 MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Result
 ```
 
+**Example:**
+
+```php
+$thread = $messageClient->sendMessage(array(
+    'receiver' => 1,  // User Id of the receiver
+    'message' => "test message", // Message body
+))->getResult();
+```
 
 
+**Return Value:**
+
+Returns the sent message as an array. See the array content or API documentation for more information.
 
 
 ---

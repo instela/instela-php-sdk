@@ -46,16 +46,17 @@ class MessagesClient extends InstelaClient
      * **Example:**
      *
      * ```php
-     * $thread = $messageClient->getThread(array(
+     * $thread = $messageClient->getThreadList(array(
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
-     * ));
+     * ))->getResult();
+     *
      * ```
      *
      * @param array $args Arguments
      *
      * @throws \GuzzleHttp\Exception\RequestException
-     * @return Result
+     * @return Result Returns the thread list as an array. See the array content or API documentation for more information.
      */
     public function getThreadList(array $args = [])
     {
@@ -76,13 +77,13 @@ class MessagesClient extends InstelaClient
      *     'u2' => 50, // User Id of the second participant of the message thread
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
-     * ));
+     * ))->getResult();
      * ```
      *
      * @param array $args Arguments
      *
      * @throws \GuzzleHttp\Exception\RequestException
-     * @return Result
+     * @return Result Returns the thread as an array. See the array content or API documentation for more information.
      */
     public function getThread(array $args = [])
     {
@@ -93,10 +94,18 @@ class MessagesClient extends InstelaClient
     /**
      * Sends message from the account of the authorized user.
      *
+     * **Example:**
+     *
+     * ```php
+     * $thread = $messageClient->sendMessage(array(
+     *     'receiver' => 1,  // User Id of the receiver
+     *     'message' => "test message", // Message body
+     * ))->getResult();
+     * ```
      * @param array $args Arguments
      *
-     * @throws \GuzzleHttp\Exception\RequestException
-     * @return Result
+     * @throws \GuzzleHttp\Exception\RequestException Throws this exception
+     * @return Result Returns the sent message as an array. See the array content or API documentation for more information.
      */
     public function sendMessage(array $args = [])
     {
