@@ -16,7 +16,7 @@
 namespace Instela\SDK\Model;
 
 
-class Message implements Model
+class Message extends Model
 {
 
     /**

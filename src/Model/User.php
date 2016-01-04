@@ -16,7 +16,7 @@
 namespace Instela\SDK\Model;
 
 
-class User implements Model
+class User extends Model
 {
     /**
      * @var int $id

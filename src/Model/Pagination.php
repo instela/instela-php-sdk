@@ -16,7 +16,7 @@
 namespace Instela\SDK\Model;
 
 
-class Pagination implements Model
+class Pagination extends Model
 {
     /**
      * @var int $per_page

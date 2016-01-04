@@ -16,7 +16,7 @@
 namespace Instela\SDK\Model;
 
 
-class Thread implements Model
+class Thread extends Model
 {
     /**
      * @var Pagination $pagination
