@@ -49,7 +49,7 @@ class MessagesClient extends InstelaClient
      * **Example:**
      *
      * ```php
-     * $thread = $messageClient->getThreadList(array(
+     * $threadList = $messageClient->getThreadList(array(
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
      * ));
@@ -100,7 +100,7 @@ class MessagesClient extends InstelaClient
      * **Example:**
      *
      * ```php
-     * $thread = $messageClient->sendMessage(array(
+     * $message = $messageClient->sendMessage(array(
      *     'receiver' => 1,  // User Id of the receiver
      *     'message' => "test message", // Message body
      * ));
@@ -116,4 +116,25 @@ class MessagesClient extends InstelaClient
         return parent::__call(__FUNCTION__, func_get_args())->getResult();
     }
 
+
+    /**
+     * Gets message with given id.
+     *
+     * **Example:**
+     *
+     * ```php
+     * $message = $messageClient->getMessage(array(
+     *     'id' => 1,  // Id of the message
+     * ));
+     * ```
+     *
+     * @param array $args Arguments
+     *
+     * @throws \GuzzleHttp\Exception\RequestException Throws this exception
+     * @return Message Returns the found message.
+     */
+    public function getMessage(array $args = [])
+    {
+        return parent::__call(__FUNCTION__, func_get_args())->getResult();
+    }
 }

@@ -24,6 +24,7 @@ Instela API makes accessible almost every method used in [Instela](https://www.i
     * [getThreadList](#getthreadlist)
     * [getThread](#getthread)
     * [sendMessage](#sendmessage)
+    * [getMessage](#getmessage)
 
 ## MessagesClient
 *\Instela\SDK\Messages\MessagesClient*
@@ -55,7 +56,7 @@ MessagesClient::getThreadList( array $args = array() ): \Instela\SDK\Model\Threa
 **Example:**
 
 ```php
-$thread = $messageClient->getThreadList(array(
+$threadList = $messageClient->getThreadList(array(
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
 ));
@@ -108,7 +109,7 @@ MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Model\Message
 **Example:**
 
 ```php
-$thread = $messageClient->sendMessage(array(
+$message = $messageClient->sendMessage(array(
     'receiver' => 1,  // User Id of the receiver
     'message' => "test message", // Message body
 ));
@@ -118,6 +119,30 @@ $thread = $messageClient->sendMessage(array(
 **Return Value:**
 
 Returns the sent message.
+
+
+---
+
+### getMessage
+
+Gets message with given id.
+
+```php
+MessagesClient::getMessage( array $args = array() ): \Instela\SDK\Model\Message
+```
+
+**Example:**
+
+```php
+$message = $messageClient->getMessage(array(
+    'id' => 1,  // Id of the message
+));
+```
+
+
+**Return Value:**
+
+Returns the found message.
 
 
 ---

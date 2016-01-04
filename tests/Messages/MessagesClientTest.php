@@ -80,7 +80,7 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testSendMessage()
+    public function testSendMessageAndGetIt()
     {
         $userId     = 6616;
         $client     = $this->getClient(['token' => static::TOKEN]);
@@ -95,5 +95,22 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(\DateTime::class, $newMessage->getSentAt());
         $this->assertNotNull($newMessage->getId());
         $this->assertEquals($userId, $newMessage->getReceiver()->getId());
+
+        $message = $client->getMessage(['id' => $newMessage->getId()]);
+        $this->assertInstanceOf(Message::class, $message);
     }
+
+    /**
+     * @expectedException Instela\SDK\Exceptions\UnauthorizedException
+     */
+    public function testUnAuthorizedMessageFetch()
+    {
+        $client = $this->getClient(['token' => static::TOKEN]);
+        $client->getMessage(
+            [
+                'id' => 44474324
+            ]
+        );
+    }
+
 }
