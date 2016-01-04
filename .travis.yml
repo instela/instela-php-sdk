@@ -4,7 +4,7 @@ php:
   - '7.0'
   - hhvm
 
-before_scripts:
+before_script:
   - composer install
 
 script: vendor/bin/phpunit tests
