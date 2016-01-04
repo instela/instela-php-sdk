@@ -21,10 +21,19 @@ use Instela\SDK\Exceptions;
 
 abstract class InstelaClient
 {
+    const VERSION = '0.1';
     const API_BASE = 'https://api.instela.com/v2/';
     const API_BASE_INTERNAL = 'http://api-internal.instela.com/v2/';
 
     const CONFIGURATION_NAME = '';
+
+    public static $userAgent;
+
+    public static function setUserAgent($userAgent)
+    {
+        self::$userAgent = $userAgent;
+    }
+
     /**
      * @array
      */
@@ -92,7 +101,14 @@ abstract class InstelaClient
     public function execute(Request $command, $operation)
     {
         try {
-            $client   = new Client();
+            $client = new Client(
+                [
+                    'headers' => [
+                        'User-Agent' => (null === self::$userAgent ? 'Instela-Api-Client ' . static::VERSION : self::$userAgent)
+                    ]
+                ]
+            );
+
             $response = $client->send($command);
             $result   = new Result($response);
             return $result;
@@ -193,6 +209,7 @@ abstract class InstelaClient
             }
 
             $request = new Request($operation['http']['method'], $url, $headers, json_encode($body));
+
             return $request;
         }
     }
