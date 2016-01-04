@@ -403,6 +403,6 @@ class TextItem extends Model
             return $this->text;
         }
 
-        return $this->url;
+        return $this->url . '';
     }
 }
