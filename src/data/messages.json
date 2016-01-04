@@ -21,6 +21,7 @@
           "location": "query"
         }
       ],
+      "map": "ThreadList",
       "errors": {
         "400": {
           "shape": "BadRequestException",
@@ -60,6 +61,7 @@
           "location": "query"
         }
       ],
+      "map": "Thread",
       "errors": {
         "400": {
           "shape": "BadRequestException",
@@ -99,6 +101,7 @@
           "location": "body"
         }
       ],
+      "map": "Message",
       "errors": {
         "400": {
           "shape": "BadRequestException",

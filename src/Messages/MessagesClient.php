@@ -16,6 +16,9 @@ namespace Instela\SDK\Messages;
 
 use Instela\SDK\InstelaClient;
 use Instela\SDK\Result;
+use Instela\SDK\Model\Thread;
+use Instela\SDK\Model\ThreadList;
+use Instela\SDK\Model\Message;
 
 /**
  * This API is used to interact with the Instela Messaging service.
@@ -49,18 +52,18 @@ class MessagesClient extends InstelaClient
      * $thread = $messageClient->getThreadList(array(
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
-     * ))->getResult();
+     * ));
      *
      * ```
      *
      * @param array $args Arguments
      *
      * @throws \GuzzleHttp\Exception\RequestException
-     * @return Result Returns the thread list as an array. See the array content or API documentation for more information.
+     * @return ThreadList Returns a thread list object
      */
     public function getThreadList(array $args = [])
     {
-        return parent::__call(__FUNCTION__, func_get_args());
+        return parent::__call(__FUNCTION__, func_get_args())->getResult();
     }
 
 
@@ -77,17 +80,17 @@ class MessagesClient extends InstelaClient
      *     'u2' => 50, // User Id of the second participant of the message thread
      *     'page' => 1, // Optional, default = 1
      *     'per_page' => '25' // Optional, default = 1
-     * ))->getResult();
+     * ));
      * ```
      *
      * @param array $args Arguments
      *
      * @throws \GuzzleHttp\Exception\RequestException
-     * @return Result Returns the thread as an array. See the array content or API documentation for more information.
+     * @return Thread Returns a thread object.
      */
     public function getThread(array $args = [])
     {
-        return parent::__call(__FUNCTION__, func_get_args());
+        return parent::__call(__FUNCTION__, func_get_args())->getResult();
     }
 
 
@@ -100,16 +103,17 @@ class MessagesClient extends InstelaClient
      * $thread = $messageClient->sendMessage(array(
      *     'receiver' => 1,  // User Id of the receiver
      *     'message' => "test message", // Message body
-     * ))->getResult();
+     * ));
      * ```
+     *
      * @param array $args Arguments
      *
      * @throws \GuzzleHttp\Exception\RequestException Throws this exception
-     * @return Result Returns the sent message as an array. See the array content or API documentation for more information.
+     * @return Message Returns the sent message.
      */
     public function sendMessage(array $args = [])
     {
-        return parent::__call(__FUNCTION__, func_get_args());
+        return parent::__call(__FUNCTION__, func_get_args())->getResult();
     }
 
 }

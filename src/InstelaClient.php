@@ -109,8 +109,9 @@ abstract class InstelaClient
                 ]
             );
 
-            $response = $client->send($command);
-            $result   = new Result($response);
+            $response   = $client->send($command);
+            $modelClass = '\\Instela\\SDK\\Model\\' . $operation['map'];
+            $result     = new Result($response, new $modelClass);
             return $result;
         } catch (RequestException $e) {
             if (isset($operation['errors'][$e->getCode()])) {

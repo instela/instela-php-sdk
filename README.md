@@ -49,7 +49,7 @@ $client = MessagesClient(array(
 Gets thread list for the authorized user.
 
 ```php
-MessagesClient::getThreadList( array $args = array() ): \Instela\SDK\Result
+MessagesClient::getThreadList( array $args = array() ): \Instela\SDK\Model\ThreadList
 ```
 
 **Example:**
@@ -58,14 +58,14 @@ MessagesClient::getThreadList( array $args = array() ): \Instela\SDK\Result
 $thread = $messageClient->getThreadList(array(
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
-))->getResult();
+));
 
 ```
 
 
 **Return Value:**
 
-Returns the thread list as an array. See the array content or API documentation for more information.
+Returns a thread list object
 
 
 ---
@@ -75,7 +75,7 @@ Returns the thread list as an array. See the array content or API documentation 
 Gets the thread for the authorized user.
 
 ```php
-MessagesClient::getThread( array $args = array() ): \Instela\SDK\Result
+MessagesClient::getThread( array $args = array() ): \Instela\SDK\Model\Thread
 ```
 
 **Example:**
@@ -86,13 +86,13 @@ $thread = $messageClient->getThread(array(
     'u2' => 50, // User Id of the second participant of the message thread
     'page' => 1, // Optional, default = 1
     'per_page' => '25' // Optional, default = 1
-))->getResult();
+));
 ```
 
 
 **Return Value:**
 
-Returns the thread as an array. See the array content or API documentation for more information.
+Returns a thread object.
 
 
 ---
@@ -102,7 +102,7 @@ Returns the thread as an array. See the array content or API documentation for m
 Sends message from the account of the authorized user.
 
 ```php
-MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Result
+MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Model\Message
 ```
 
 **Example:**
@@ -111,13 +111,13 @@ MessagesClient::sendMessage( array $args = array() ): \Instela\SDK\Result
 $thread = $messageClient->sendMessage(array(
     'receiver' => 1,  // User Id of the receiver
     'message' => "test message", // Message body
-))->getResult();
+));
 ```
 
 
 **Return Value:**
 
-Returns the sent message as an array. See the array content or API documentation for more information.
+Returns the sent message.
 
 
 ---

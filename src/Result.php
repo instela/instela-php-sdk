@@ -15,23 +15,48 @@
  */
 namespace Instela\SDK;
 
+use Instela\SDK\Model\Model;
 use Psr\Http\Message\ResponseInterface;
+use JsonMapper;
 
 class Result
 {
+    /**
+     * @var JsonMapper $mapper
+     */
+    protected static $mapper;
+
     /**
      * @var ResponseInterface $response
      */
     protected $response;
 
     /**
+     * @var Model $model
+     */
+    protected $model;
+
+    /**
      * Result constructor.
      *
      * @param ResponseInterface $response
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(ResponseInterface $response, Model $model)
     {
         $this->response = $response;
+        $this->model    = $model;
+    }
+
+    /**
+     * @return JsonMapper
+     */
+    protected function getMapper()
+    {
+        if (null === self::$mapper) {
+            self::$mapper = new JsonMapper();
+        }
+
+        return self::$mapper;
     }
 
     /**
@@ -43,10 +68,10 @@ class Result
     }
 
     /**
-     * @return array
+     * @return Model
      */
     public function getResult()
     {
-        return json_decode($this->getResponse()->getBody(), true);
+        return $this->getMapper()->map(json_decode($this->response->getBody()->getContents()), $this->model);
     }
 }

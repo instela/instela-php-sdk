@@ -14,6 +14,11 @@
  */
 
 use Instela\SDK\Messages\MessagesClient;
+use Instela\SDK\Model\ThreadList;
+use Instela\SDK\Model\Pagination;
+use Instela\SDK\Model\Thread;
+use Instela\SDK\Model\Message;
+use Instela\SDK\Model\User;
 
 class MessagesClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,12 +48,17 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
     {
         $page       = 3;
         $client     = $this->getClient(['token' => static::TOKEN]);
-        $threadList = $client->getThreadList(['page' => $page])->getResult();
+        $threadList = $client->getThreadList(['page' => $page]);
 
 
+        /*
         $this->assertArrayHasKey('pagination', $threadList);
         $this->assertArrayHasKey('threads', $threadList);
         $this->assertEquals($page, $threadList['pagination']['current_page']);
+        */
+        $this->assertInstanceOf(ThreadList::class, $threadList);
+        $this->assertInstanceOf(Pagination::class, $threadList->getPagination());
+
     }
 
     public function testGetConversation()
@@ -59,11 +69,15 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
                 'u1' => 213181,
                 'u2' => 50
             ]
-        )->getResult();
+        );
 
-        $this->assertArrayHasKey('pagination', $thread);
-        $this->assertArrayHasKey('participants', $thread);
-        $this->assertArrayHasKey('messages', $thread);
+        $this->assertInstanceOf(Thread::class, $thread);
+        foreach ($thread->getMessages() as $message) {
+            $this->assertInstanceOf(Message::class, $message);
+            $this->assertInstanceOf(User::class, $message->getReceiver());
+            $this->assertInstanceOf(User::class, $message->getSender());
+            $this->assertEquals(\DateTime::class, $message->getSentAt());
+        }
     }
 
     public function testSendMessage()
@@ -75,9 +89,11 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
                 'receiver' => $userId,
                 'message'  => 'test message from api'
             ]
-        )->getResult();
+        );
 
-        $this->assertNotNull($newMessage['id']);
-        $this->assertEquals($userId, $newMessage['receiver']['id']);
+        $this->assertInstanceOf(Message::class, $newMessage);
+        $this->assertInstanceOf(\DateTime::class, $newMessage->getSentAt());
+        $this->assertNotNull($newMessage->getId());
+        $this->assertEquals($userId, $newMessage->getReceiver()->getId());
     }
 }
