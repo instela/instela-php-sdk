@@ -162,6 +162,8 @@ abstract class InstelaClient
             $headers['Authorization'] = 'Bearer ' . $this->args['token'];
         }
 
+        $headers['Content-Type'] = 'application/json';
+
         $queryParameters = null;
         if (isset($operation['parameters']) && is_array($operation['parameters'])) {
             foreach ($operation['parameters'] as $parameter) {
