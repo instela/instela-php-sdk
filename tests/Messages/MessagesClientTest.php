@@ -50,12 +50,6 @@ class MessagesClientTest extends \PHPUnit_Framework_TestCase
         $client     = $this->getClient(['token' => static::TOKEN]);
         $threadList = $client->getThreadList(['page' => $page]);
 
-
-        /*
-        $this->assertArrayHasKey('pagination', $threadList);
-        $this->assertArrayHasKey('threads', $threadList);
-        $this->assertEquals($page, $threadList['pagination']['current_page']);
-        */
         $this->assertInstanceOf(ThreadList::class, $threadList);
         $this->assertInstanceOf(Pagination::class, $threadList->getPagination());
 

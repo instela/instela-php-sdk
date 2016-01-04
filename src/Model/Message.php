@@ -45,6 +45,11 @@ class Message extends Model
     protected $sent_at;
 
     /**
+     * @var array $message
+     */
+    protected $message;
+
+    /**
      * @return int
      */
     public function getId()
@@ -124,5 +129,29 @@ class Message extends Model
         $this->sent_at = $sent_at;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
 
+    /**
+     * @param TextItem[] $message
+     */
+    public function setMessage(array $message)
+    {
+        $this->message = $message;
+    }
+
+    protected function getTextAsHtml()
+    {
+        $text = '';
+        foreach ($this->message as $textItem) {
+            $text .= $textItem . '\\n';
+        }
+        return rtrim($text, '\\n');
+
+    }
 }
