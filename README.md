@@ -1,6 +1,6 @@
 # Instela API PHP SDK
 
-[![Build Status](https://travis-ci.com/thehivecluster/instela-api-client.svg?token=g7m3yvL9xyyUBXqyRzHX)](https://travis-ci.com/thehivecluster/instela-api-client)
+[![Build Status](https://travis-ci.org/instela/instela-php-sdk.svg)](https://travis-ci.org/instela/instela-php-sdk)
 
 Instela API makes accessible almost every method used in [Instela](https://www.instela.com). With PHP SDK, you can easily access to all API functions in PHP.
  
